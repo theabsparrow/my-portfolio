@@ -1,148 +1,120 @@
 "use client";
-
+import { IoArrowForwardOutline } from "react-icons/io5";
+import { IoIosArrowForward } from "react-icons/io";
+import { CiMenuFries } from "react-icons/ci";
 import Link from "next/link";
 import { useState } from "react";
+import { usePathname } from "next/navigation";
+import ThemeModal from "../thrmeModal/ThemeModal";
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [darkOverlayVisible, setDarkOverlayVisible] = useState(false);
+  const [showMenuContent, setShowMenuContent] = useState(false);
+  const pathname = usePathname();
+
+  const routes = [
+    { name: "Home", pathname: "/" },
+    { name: "My Work", pathname: "/myWork" },
+    { name: "Blog", pathname: "/blog" },
+    { name: "My Github", pathname: "/myGithub" },
+    { name: "Contact Me", pathname: "/contactMe" },
+  ];
+  const desktopRoutes = [
+    { name: "Home", pathname: "/" },
+    { name: "My Work", pathname: "/myWork" },
+    { name: "Blog", pathname: "/blog" },
+  ];
+
+  const handleMenuToggle = () => {
+    setMenuOpen(true);
+    setDarkOverlayVisible(true);
+
+    setTimeout(() => {
+      setDarkOverlayVisible(false);
+      setShowMenuContent(true);
+    }, 500);
+  };
+
+  const handleClose = () => {
+    setTimeout(() => {
+      setMenuOpen(false);
+      setDarkOverlayVisible(false);
+      setShowMenuContent(false);
+    }, 500);
+  };
 
   return (
-    <nav
-      className="fixed top-0 left-0 right-0 z-50
-  bg-gradient-to-r from-[#a18cd1] via-[#fbc2eb] to-[#a6c1ee]
-  bg-opacity-30 backdrop-blur-xl border-b border-white/20 shadow-lg"
-    >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between h-16 items-center">
-          {/* Logo or Name */}
-          <div className="text-2xl font-bold text-indigo-600">AB.</div>
+    <nav className="sticky top-0 z-20 md:px-56 px-4 py-2 bg-[#c9c9ff] dark:bg-[#05092e]">
+      <section className="flex justify-between h-16 items-center">
+        <div className=" flex items-center space-x-8">
+          <Link
+            href="/"
+            className="text-2xl font-bold text-indigo-600 cursor-pointer"
+          >
+            AB.
+          </Link>
 
-          {/* Desktop Menu */}
-          <div className="hidden md:flex space-x-8">
-            <Link
-              href="#home"
-              className="text-gray-700 hover:text-indigo-600 transition"
-            >
-              Home
-            </Link>
-            <Link
-              href="#about"
-              className="text-gray-700 hover:text-indigo-600 transition"
-            >
-              About
-            </Link>
-            <Link
-              href="#projects"
-              className="text-gray-700 hover:text-indigo-600 transition"
-            >
-              Projects
-            </Link>
-            <Link
-              href="#contact"
-              className="text-gray-700 hover:text-indigo-600 transition"
-            >
-              Contact
-            </Link>
-          </div>
-
-          {/* Mobile Menu Toggle */}
-          <div className="md:hidden">
-            <button
-              onClick={() => setMenuOpen(!menuOpen)}
-              className="text-gray-800 focus:outline-none"
-              aria-label="Toggle Menu"
-            >
-              {menuOpen ? (
-                <svg
-                  className="h-6 w-6"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M6 18L18 6M6 6l12 12"
-                  />
-                </svg>
-              ) : (
-                <svg
-                  className="h-6 w-6"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M4 8h16M4 16h16"
-                  />
-                </svg>
-              )}
-            </button>
-          </div>
-        </div>
-
-        <div
-          className={`fixed top-0 left-0 h-full w-64 bg-white shadow-lg z-50 transform transition-transform duration-300 ease-in-out
-          ${menuOpen ? "translate-x-0" : "-translate-x-full"}`}
-        >
-          <div className="p-4 flex justify-between items-center border-b">
-            <span className="text-xl font-bold text-indigo-600">Menu</span>
-            <button
-              onClick={() => setMenuOpen(false)}
-              className="text-gray-700"
-              aria-label="Close menu"
-            >
-              <svg
-                className="h-6 w-6"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
+          <div className="hidden md:flex items-center space-x-8">
+            {desktopRoutes.map((route) => (
+              <Link
+                key={route.name}
+                href={route.pathname}
+                className={`text-gray-900 dark:text-white   py-2 px-2 rounded-xl ${
+                  pathname === route.pathname
+                    ? "bg-gray-600 dark:bg-[#c9c9ff99] text-white"
+                    : "hover:text-purple-600 duration-500"
+                }`}
               >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M6 18L18 6M6 6l12 12"
-                />
-              </svg>
+                {route.name}
+              </Link>
+            ))}
+            <button className="group  text-gray-900 dark:text-white hover:text-white hover:dark:text-purple-600 duration-500 flex items-center gap-2 py-2 px-2 hover:bg-gray-600 hover:dark:bg-[#c9c9ff99] rounded-xl cursor-pointer ">
+              More{" "}
+              <IoIosArrowForward className="transform transition-transform duration-300 group-hover:rotate-90" />
             </button>
           </div>
-          <div className="flex flex-col space-y-4 p-4">
-            <a
-              href="#home"
-              className="text-gray-700 hover:text-indigo-600"
-              onClick={() => setMenuOpen(false)}
-            >
-              Home
-            </a>
-            <a
-              href="#about"
-              className="text-gray-700 hover:text-indigo-600"
-              onClick={() => setMenuOpen(false)}
-            >
-              About
-            </a>
-            <a
-              href="#projects"
-              className="text-gray-700 hover:text-indigo-600"
-              onClick={() => setMenuOpen(false)}
-            >
-              Projects
-            </a>
-            <a
-              href="#contact"
-              className="text-gray-700 hover:text-indigo-600"
-              onClick={() => setMenuOpen(false)}
-            >
-              Contact
-            </a>
-          </div>
         </div>
-      </div>
+
+        <div className="flex items-center gap-10">
+          <button
+            onClick={handleMenuToggle}
+            className="text-gray-800 focus:outline-none md:hidden"
+            aria-label="Toggle Menu"
+          >
+            {menuOpen || (
+              <CiMenuFries className="dark:text-white text-gray-900 text-2xl rotate-180" />
+            )}
+          </button>
+          <ThemeModal />
+        </div>
+      </section>
+
+      {menuOpen && (
+        <div className="fixed inset-0 z-50">
+          {darkOverlayVisible && (
+            <div className="absolute inset-0 bg-black dark:bg-white opacity-50  transition-opacity duration-300 ease-in-out pointer-events-none" />
+          )}
+          {showMenuContent && (
+            <div className="absolute w-[88vw] inset-0 bg-white dark:bg-gray-900 z-50 flex flex-col space-y-6 p-6 animate-fadeInMenu">
+              {routes.map((route) => (
+                <Link
+                  key={route.name}
+                  href={route.pathname}
+                  className={` dark:text-white hover:text-purple-600 duration-500 flex items-center gap-2 py-2 px-2  rounded-xl ${
+                    pathname === route.pathname
+                      ? "bg-[#05092e] dark:bg-[#c9c9ff99] text-white"
+                      : "bg-[#c9c9ff99] dark:bg-[#05092e] text-gray-700"
+                  }`}
+                  onClick={route.name === "Home" && handleClose}
+                >
+                  {route.name} <IoArrowForwardOutline />
+                </Link>
+              ))}
+            </div>
+          )}
+        </div>
+      )}
     </nav>
   );
 };
