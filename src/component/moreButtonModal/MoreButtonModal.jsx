@@ -1,15 +1,23 @@
 "use client";
 
+import { useEffect, useRef, useState } from "react";
 import { IoIosArrowForward } from "react-icons/io";
 
 const MoreButtonModal = () => {
   return (
-    <>
-      <button className="group  text-gray-900 dark:text-white hover:text-white hover:dark:text-purple-600 duration-500 flex items-center gap-2 py-2 px-2 hover:bg-gray-600 hover:dark:bg-[#c9c9ff99] rounded-xl cursor-pointer ">
-        More{" "}
-        <IoIosArrowForward className="transform transition-transform duration-300 group-hover:rotate-90" />
-      </button>
-    </>
+    <section className="bg-[#c9c9ff] dark:bg-[#05092e] rounded-xl shadow-lg p-6 ">
+      <h2 className="text-xl font-medium mb-4 flex items-center gap-4 dark:text-white text-black">
+        Settings{" "}
+      </h2>
+      <p className="mb-4 dark:text-[rgba(255,255,255,0.7)] text-gray-700 text-xl font-normal">
+        Here you can change your settings, like website theme or decorations.
+      </p>
+      <div className="flex items-center justify-between">
+        <p className="flex items-center gap-2 dark:text-[rgba(255,255,255,0.7)] text-gray-700 text-xl font-normal">
+          Theme
+        </p>
+      </div>
+    </section>
   );
 };
 

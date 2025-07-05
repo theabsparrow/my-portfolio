@@ -1,5 +1,6 @@
 "use client";
 import { IoArrowForwardOutline } from "react-icons/io5";
+import { IoIosArrowForward } from "react-icons/io";
 import { CiMenuFries } from "react-icons/ci";
 import Link from "next/link";
 import { useState } from "react";
@@ -9,6 +10,7 @@ import MoreButtonModal from "../moreButtonModal/MoreButtonModal";
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [open, setOpen] = useState(false);
   const [darkOverlayVisible, setDarkOverlayVisible] = useState(false);
   const [showMenuContent, setShowMenuContent] = useState(false);
   const pathname = usePathname();
@@ -46,7 +48,7 @@ const Navbar = () => {
 
   return (
     <nav className="sticky top-0 z-20 md:px-56 px-4 py-2 bg-[#c9c9ff] dark:bg-[#05092e]">
-      <section className="flex justify-between h-16 items-center">
+      <section className="flex justify-between h-16 items-center relative">
         <div className=" flex items-center space-x-8">
           <Link
             href="/"
@@ -69,8 +71,18 @@ const Navbar = () => {
                 {route.name}
               </Link>
             ))}
-            <MoreButtonModal />
+            <button
+              onClick={() => setOpen(!open)}
+              className="group  text-gray-900 dark:text-white hover:text-white hover:dark:text-purple-600 duration-500 flex items-center gap-2 py-2 px-2 hover:bg-gray-600 hover:dark:bg-[#c9c9ff99] rounded-xl cursor-pointer "
+            >
+              More{" "}
+              <IoIosArrowForward className="transform transition-transform duration-300 group-hover:rotate-90" />
+            </button>
           </div>
+        </div>
+
+        <div className="absolute md:top-16 left-48 w-[38%]">
+          {open && <MoreButtonModal />}
         </div>
 
         <div className="flex items-center gap-10">
