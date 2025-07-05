@@ -1,21 +1,47 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
-import { IoIosArrowForward } from "react-icons/io";
+import Link from "next/link";
+import { IoLogoGithub } from "react-icons/io";
+import { TbLocation } from "react-icons/tb";
 
 const MoreButtonModal = () => {
+  const routes = [
+    {
+      name: "My Github Profile",
+      description: "Explore my projects and contributions on Github",
+      pathname: "/",
+      icon: IoLogoGithub,
+    },
+    {
+      name: "Contact Me",
+      description: "Have any Question? Feel free to reach out to me",
+      pathname: "/contact-me",
+      icon: TbLocation,
+    },
+  ];
   return (
-    <section className="bg-[#c9c9ff] dark:bg-[#05092e] rounded-xl shadow-lg p-6 ">
-      <h2 className="text-xl font-medium mb-4 flex items-center gap-4 dark:text-white text-black">
-        Settings{" "}
-      </h2>
-      <p className="mb-4 dark:text-[rgba(255,255,255,0.7)] text-gray-700 text-xl font-normal">
-        Here you can change your settings, like website theme or decorations.
-      </p>
-      <div className="flex items-center justify-between">
-        <p className="flex items-center gap-2 dark:text-[rgba(255,255,255,0.7)] text-gray-700 text-xl font-normal">
-          Theme
-        </p>
+    <section className="bg-[#c9c9ff] dark:bg-[#05092e] rounded-xl shadow-lg p-6 border">
+      <div>
+        {routes.map((route) => (
+          <Link
+            key={route.pathname}
+            href={route.pathname}
+            className="flex items-center gap-4 p-2 rounded-lg hover:bg-[rgba(255,255,255,0.2)] dark:hover:bg-gray-700 duration-500"
+          >
+            <p className="bg-[#d3d4d5] dark:bg-gray-500 p-2 rounded-lg ">
+              {" "}
+              <route.icon className="text-4xl text-black" />
+            </p>
+            <p className="flex flex-col leading-6">
+              <span className=" font-bold dark:text-white text-gray-900">
+                {route.name}
+              </span>{" "}
+              <span className="dark:text-[#AEB3B8] text-gray-700">
+                {route.description}
+              </span>
+            </p>
+          </Link>
+        ))}
       </div>
     </section>
   );

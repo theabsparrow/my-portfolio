@@ -1,34 +1,78 @@
 "use client";
 
-import { Sun } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
-import { IoIosArrowForward } from "react-icons/io";
 import { IoSettingsOutline } from "react-icons/io5";
 import { MdOutlineLightMode } from "react-icons/md";
 import { RxDoubleArrowDown } from "react-icons/rx";
 import { WiStars } from "react-icons/wi";
 import { IoIosArrowRoundForward } from "react-icons/io";
+import { MdOutlineDarkMode } from "react-icons/md";
+import { TiDeviceDesktop } from "react-icons/ti";
+
+const getSystemTheme = () =>
+  window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
 
 const ThemeModal = () => {
   const [themeModalOpen, setThemeMOdalOpen] = useState(false);
   const [enabled, setEnabled] = useState(false);
+  const [open, setOpen] = useState(false);
+  const [theme, setTheme] = useState("system");
   const modalRef = useRef(null);
+
+  const themeIcon = [
+    { name: "System", icon: TiDeviceDesktop, value: "system" },
+    { name: "Dark", icon: MdOutlineDarkMode, value: "dark" },
+    { name: "Light", icon: MdOutlineLightMode, value: "light" },
+  ];
+
+  useEffect(() => {
+    const savedTheme = localStorage.getItem("theme") || "system";
+    setTheme(savedTheme);
+    const applyTheme = (themeValue) => {
+      const html = document.documentElement;
+      if (themeValue === "system") {
+        const systemTheme = getSystemTheme();
+        html.className = systemTheme === "dark" ? "dark" : "";
+        html.setAttribute("data-theme", systemTheme);
+      } else {
+        html.className = themeValue === "dark" ? "dark" : "";
+        html.setAttribute("data-theme", themeValue);
+      }
+    };
+    applyTheme(savedTheme);
+  }, []);
 
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (modalRef.current && !modalRef.current.contains(event.target)) {
         setThemeMOdalOpen(false);
+        setOpen(false);
       }
     };
-
-    if (themeModalOpen) {
+    if (themeModalOpen || open) {
       document.addEventListener("mousedown", handleClickOutside);
     }
-
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, [themeModalOpen]);
+
+  const handleThemeChange = (value) => {
+    const html = document.documentElement;
+    localStorage.setItem("theme", value);
+
+    if (value === "system") {
+      const systemTheme = getSystemTheme();
+      html.className = systemTheme === "dark" ? "dark" : "";
+      html.setAttribute("data-theme", systemTheme);
+    } else {
+      html.className = value === "dark" ? "dark" : "";
+      html.setAttribute("data-theme", value);
+    }
+
+    setTheme(value);
+    setOpen(false);
+  };
 
   return (
     <>
@@ -52,19 +96,43 @@ const ThemeModal = () => {
               Here you can change your settings, like website theme or
               decorations.
             </p>
-            <div className="flex items-center justify-between">
+            <div className="flex items-center justify-between relative">
               <p className="flex items-center gap-2 dark:text-[rgba(255,255,255,0.7)] text-gray-700 text-xl font-normal">
                 <MdOutlineLightMode /> Theme
               </p>
               <div>
-                <button className="px-2 py-2 flex items-center justify-between border border-gray-400 rounded-lg w-[30vw] md:w-[8vw] cursor-pointer hover:border-gray-600 duration-500 dark:text-[rgba(255,255,255,0.7)] text-gray-700 ">
-                  <span className="flex items-center gap-2">
+                <button
+                  onClick={() => setOpen(!open)}
+                  className="px-2 py-2 flex items-center justify-between border border-gray-400 rounded-lg w-[30vw] md:w-[8vw] cursor-pointer hover:border-gray-600 duration-500 dark:text-[rgba(255,255,255,0.7)] text-gray-700 "
+                >
+                  <span className="flex items-center gap-2 text-lg">
                     {" "}
-                    <Sun /> Light
+                    {themeIcon.map(
+                      (icon) =>
+                        icon.name === theme && <icon.icon key={icon.name} />
+                    )}
+                    {theme}
                   </span>{" "}
                   <RxDoubleArrowDown />
                 </button>
               </div>
+              {open && (
+                <div className="flex flex-col gap-2 items-start absolute top-14 right-0 bg-white dark:bg-gray-900 px-2 py-1 z-20 rounded-lg w-[30%]">
+                  {themeIcon.map((icon) => (
+                    <button
+                      className="cursor-pointer hover:bg-gray-400 dark:hover:bg-gray-700 px-2 py-1 rounded-lg w-full"
+                      onClick={() => {
+                        handleThemeChange(icon.value);
+                      }}
+                      key={icon.name}
+                    >
+                      <span className="flex gap-2 items-center text-lg">
+                        {<icon.icon />} {icon.name}
+                      </span>
+                    </button>
+                  ))}
+                </div>
+              )}
             </div>
             <div className="border border-t border-gray-400 mt-5"></div>
             <div className="flex items-center justify-between mt-4">

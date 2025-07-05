@@ -47,7 +47,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="sticky top-0 z-20 md:px-56 px-4 py-2 bg-[#c9c9ff] dark:bg-[#05092e]">
+    <nav className="sticky top-0 z-20 md:px-56 px-4 py-2 bg-[#c9c9ff] dark:bg-[#05092e] font-main">
       <section className="flex justify-between h-16 items-center relative">
         <div className=" flex items-center space-x-8">
           <Link
@@ -73,7 +73,7 @@ const Navbar = () => {
             ))}
             <button
               onClick={() => setOpen(!open)}
-              className="group  text-gray-900 dark:text-white hover:text-white hover:dark:text-purple-600 duration-500 flex items-center gap-2 py-2 px-2 hover:bg-gray-600 hover:dark:bg-[#c9c9ff99] rounded-xl cursor-pointer "
+              className="group  text-gray-900 dark:text-white hover:text-white hover:dark:text-purple-600 duration-500 hidden md:flex items-center gap-2 py-2 px-2 hover:bg-gray-600 hover:dark:bg-[#c9c9ff99] rounded-xl cursor-pointer "
             >
               More{" "}
               <IoIosArrowForward className="transform transition-transform duration-300 group-hover:rotate-90" />
@@ -81,7 +81,7 @@ const Navbar = () => {
           </div>
         </div>
 
-        <div className="absolute md:top-16 left-48 w-[38%]">
+        <div className="absolute md:top-16 left-44 w-[38%] hidden md:flex ">
           {open && <MoreButtonModal />}
         </div>
 
