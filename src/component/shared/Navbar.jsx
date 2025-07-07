@@ -3,10 +3,11 @@ import { IoArrowForwardOutline } from "react-icons/io5";
 import { IoIosArrowForward } from "react-icons/io";
 import { CiMenuFries } from "react-icons/ci";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
 import ThemeModal from "../thrmeModal/ThemeModal";
 import MoreButtonModal from "../moreButtonModal/MoreButtonModal";
+import Image from "next/image";
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -14,19 +15,36 @@ const Navbar = () => {
   const [darkOverlayVisible, setDarkOverlayVisible] = useState(false);
   const [showMenuContent, setShowMenuContent] = useState(false);
   const pathname = usePathname();
+  const containerRef = useRef(null);
 
   const routes = [
     { name: "Home", pathname: "/" },
-    { name: "My Work", pathname: "/myWork" },
-    { name: "Blog", pathname: "/blog" },
+    { name: "My Work", pathname: "/myProjects" },
+    { name: "Blog", pathname: "/blogs" },
     { name: "My Github", pathname: "/myGithub" },
     { name: "Contact Me", pathname: "/contactMe" },
   ];
   const desktopRoutes = [
     { name: "Home", pathname: "/" },
-    { name: "My Work", pathname: "/myWork" },
-    { name: "Blog", pathname: "/blog" },
+    { name: "My Work", pathname: "/myProjects" },
+    { name: "Blog", pathname: "/blogs" },
   ];
+
+  useEffect(() => {
+    if (!open) return;
+    function handleClickOutside(event) {
+      if (
+        containerRef.current &&
+        !containerRef.current.contains(event.target)
+      ) {
+        setOpen(false);
+      }
+    }
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [open]);
 
   const handleMenuToggle = () => {
     setMenuOpen(true);
@@ -50,11 +68,14 @@ const Navbar = () => {
     <nav className="sticky top-0 z-20 md:px-56 px-4 py-1 bg-[#c9c9ff] dark:bg-[#05092e] font-main">
       <section className="flex justify-between h-16 items-center relative">
         <div className=" flex items-center space-x-8">
-          <Link
-            href="/"
-            className="text-2xl font-bold text-indigo-600 cursor-pointer"
-          >
-            AB.
+          <Link href="/" className=" cursor-pointer ">
+            <Image
+              src="/logo.PNG"
+              alt="Logo"
+              width={35}
+              height={35}
+              className="w-12 md:w-14"
+            />
           </Link>
 
           <div className="hidden md:flex items-center space-x-8">
@@ -62,7 +83,7 @@ const Navbar = () => {
               <Link
                 key={route.name}
                 href={route.pathname}
-                className={`text-gray-900 dark:text-white   py-2 px-2 rounded-xl ${
+                className={`text-gray-900 dark:text-white text-lg  py-2 px-2 rounded-xl ${
                   pathname === route.pathname
                     ? "bg-gray-600 dark:bg-[#c9c9ff99] text-white"
                     : "hover:text-purple-600 duration-500"
@@ -73,7 +94,7 @@ const Navbar = () => {
             ))}
             <button
               onClick={() => setOpen(!open)}
-              className="group  text-gray-900 dark:text-white hover:text-white hover:dark:text-purple-600 duration-500 hidden md:flex items-center gap-2 py-2 px-2 hover:bg-gray-600 hover:dark:bg-[#c9c9ff99] rounded-xl cursor-pointer "
+              className="group text-lg text-gray-900 dark:text-white hover:text-white hover:dark:text-purple-600 duration-500 hidden md:flex items-center gap-2 py-2 px-2 hover:bg-gray-600 hover:dark:bg-[#c9c9ff99] rounded-xl cursor-pointer "
             >
               More{" "}
               <IoIosArrowForward className="transform transition-transform duration-300 group-hover:rotate-90" />
@@ -82,7 +103,7 @@ const Navbar = () => {
         </div>
 
         <div className="absolute md:top-[68px] left-44 w-[38%] hidden md:flex ">
-          {open && <MoreButtonModal />}
+          {open && <MoreButtonModal containerRef={containerRef} />}
         </div>
 
         <div className="flex items-center gap-10">
