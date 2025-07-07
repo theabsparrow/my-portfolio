@@ -84,7 +84,7 @@ const ThemeModal = () => {
         <IoSettingsOutline className="dark:text-white text-gray-900 text-2xl transition-transform duration-500 hover:rotate-180" />
       </button>
       {themeModalOpen && (
-        <section className="fixed inset-0 z-50 bg-[rgba(0,0,0,0.5)] dark:bg-[rgba(255,255,255,0.2)] flex justify-center items-center">
+        <section className="fixed inset-0 z-50 bg-[rgba(0,0,0,0.7)] dark:bg-[rgba(255,255,255,0.2)] flex justify-center items-center">
           <div
             ref={modalRef}
             className="bg-[#c9c9ff] dark:bg-[#05092e] rounded-xl shadow-lg p-6 w-[90%] md:w-[30%] animate-fadeIn"
@@ -117,10 +117,15 @@ const ThemeModal = () => {
                 </button>
               </div>
               {open && (
-                <div className="flex flex-col gap-2 items-start absolute top-14 right-0 bg-white dark:bg-gray-900 px-2 py-1 z-20 rounded-lg w-[30%]">
+                <div className="flex flex-col gap-2 items-start absolute top-14 right-0 bg-white dark:bg-gray-900 px-2 py-1 z-20 rounded-lg w-[40%] md:w-[30%]">
                   {themeIcon.map((icon) => (
                     <button
-                      className="cursor-pointer hover:bg-gray-400 dark:hover:bg-gray-700 px-2 py-1 rounded-lg w-full"
+                      disabled={icon.value === theme}
+                      className={`cursor-pointer px-2 py-1 rounded-lg w-full  ${
+                        icon.value !== theme
+                          ? "hover:bg-gray-400 dark:hover:bg-gray-700"
+                          : "opacity-50"
+                      }`}
                       onClick={() => {
                         handleThemeChange(icon.value);
                       }}

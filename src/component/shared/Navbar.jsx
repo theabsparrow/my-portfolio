@@ -47,7 +47,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="sticky top-0 z-20 md:px-56 px-4 py-2 bg-[#c9c9ff] dark:bg-[#05092e] font-main">
+    <nav className="sticky top-0 z-20 md:px-56 px-4 py-1 bg-[#c9c9ff] dark:bg-[#05092e] font-main">
       <section className="flex justify-between h-16 items-center relative">
         <div className=" flex items-center space-x-8">
           <Link
@@ -81,7 +81,7 @@ const Navbar = () => {
           </div>
         </div>
 
-        <div className="absolute md:top-16 left-44 w-[38%] hidden md:flex ">
+        <div className="absolute md:top-[68px] left-44 w-[38%] hidden md:flex ">
           {open && <MoreButtonModal />}
         </div>
 

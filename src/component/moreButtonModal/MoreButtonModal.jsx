@@ -20,7 +20,7 @@ const MoreButtonModal = () => {
     },
   ];
   return (
-    <section className="bg-[#c9c9ff] dark:bg-[#05092e] rounded-xl shadow-lg p-6 border">
+    <section className="bg-[#c9c9ffE6] dark:bg-[#05092eE6] rounded-xl shadow-lg p-6 border">
       <div>
         {routes.map((route) => (
           <Link
@@ -28,7 +28,7 @@ const MoreButtonModal = () => {
             href={route.pathname}
             className="flex items-center gap-4 p-2 rounded-lg hover:bg-[rgba(255,255,255,0.2)] dark:hover:bg-gray-700 duration-500"
           >
-            <p className="bg-[#d3d4d5] dark:bg-gray-500 p-2 rounded-lg ">
+            <p className="bg-gray-500 p-2 rounded-lg ">
               {" "}
               <route.icon className="text-4xl text-black" />
             </p>
