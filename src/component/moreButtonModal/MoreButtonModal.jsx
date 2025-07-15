@@ -4,7 +4,7 @@ import Link from "next/link";
 import { IoLogoGithub } from "react-icons/io";
 import { TbLocation } from "react-icons/tb";
 
-const MoreButtonModal = ({ containerRef }) => {
+const MoreButtonModal = ({ containerRef, setOpen }) => {
   const routes = [
     {
       name: "My Github Profile",
@@ -21,7 +21,7 @@ const MoreButtonModal = ({ containerRef }) => {
   ];
   return (
     <section
-      ref={containerRef}
+      // ref={containerRef}
       className="bg-[#c9c9ffE6] dark:bg-[#05092eE6] rounded-xl shadow-lg p-6 border"
     >
       <div>
@@ -33,6 +33,7 @@ const MoreButtonModal = ({ containerRef }) => {
             <Link
               key={route.pathname}
               href={route.pathname}
+              onClick={() => setOpen(false)}
               target={isExternal ? "_blank" : undefined}
               rel={isExternal ? "noopener noreferrer" : undefined}
               className="flex items-center gap-4 p-2 rounded-lg hover:bg-[rgba(255,255,255,0.2)] dark:hover:bg-gray-700 duration-500"

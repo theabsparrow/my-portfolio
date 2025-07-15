@@ -8,6 +8,7 @@ import { usePathname } from "next/navigation";
 import ThemeModal from "../thrmeModal/ThemeModal";
 import MoreButtonModal from "../moreButtonModal/MoreButtonModal";
 import Image from "next/image";
+import { desktopRoutes, routes } from "../const/navbar.const";
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -17,29 +18,18 @@ const Navbar = () => {
   const pathname = usePathname();
   const containerRef = useRef(null);
 
-  const routes = [
-    { name: "Home", pathname: "/" },
-    { name: "My Work", pathname: "/myProjects" },
-    { name: "Blog", pathname: "/blogs" },
-    { name: "My Github", pathname: "/myGithub" },
-    { name: "Contact Me", pathname: "/contactMe" },
-  ];
-  const desktopRoutes = [
-    { name: "Home", pathname: "/" },
-    { name: "My Work", pathname: "/myProjects" },
-    { name: "Blog", pathname: "/blogs" },
-  ];
-
   useEffect(() => {
     if (!open) return;
+
     function handleClickOutside(event) {
       if (
         containerRef.current &&
         !containerRef.current.contains(event.target)
       ) {
-        setOpen(false);
+        setTimeout(() => setOpen(false), 0);
       }
     }
+
     document.addEventListener("mousedown", handleClickOutside);
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
@@ -63,14 +53,13 @@ const Navbar = () => {
       setShowMenuContent(false);
     }, 500);
   };
-
   return (
-    <nav className="sticky top-0 z-20 md:px-56 px-4 py-1 bg-[#c9c9ff] dark:bg-[#05092e] font-main">
+    <nav className="sticky top-0 z-20 md:px-56 px-4 py-1 bg-[#c9c9ff] dark:bg-[#05092e]">
       <section className="flex justify-between h-16 items-center relative">
         <div className=" flex items-center space-x-8">
           <Link href="/" className=" cursor-pointer ">
             <Image
-              src="/logo.PNG"
+              src="/logo.webp"
               alt="Logo"
               width={35}
               height={35}
@@ -92,18 +81,23 @@ const Navbar = () => {
                 {route.name}
               </Link>
             ))}
-            <button
-              onClick={() => setOpen(!open)}
-              className="group text-lg text-gray-900 dark:text-white hover:text-white hover:dark:text-purple-600 duration-500 hidden md:flex items-center gap-2 py-2 px-2 hover:bg-gray-600 hover:dark:bg-[#c9c9ff99] rounded-xl cursor-pointer "
-            >
-              More{" "}
-              <IoIosArrowForward className="transform transition-transform duration-300 group-hover:rotate-90" />
-            </button>
+            <div ref={containerRef}>
+              <button
+                onClick={() => setOpen(!open)}
+                className="group text-lg text-gray-900 dark:text-white hover:text-white hover:dark:text-purple-600 duration-500 hidden md:flex items-center gap-2 py-2 px-2 hover:bg-gray-600 hover:dark:bg-[#c9c9ff99] rounded-xl cursor-pointer "
+              >
+                More{" "}
+                <IoIosArrowForward
+                  className={`transform transition-transform duration-300 group-hover:rotate-90 ${
+                    open && "rotate-90"
+                  }`}
+                />
+              </button>
+              <div className="absolute md:top-[68px] left-44 w-[38%] hidden md:flex ">
+                {open && <MoreButtonModal setOpen={setOpen} />}
+              </div>
+            </div>
           </div>
-        </div>
-
-        <div className="absolute md:top-[68px] left-44 w-[38%] hidden md:flex ">
-          {open && <MoreButtonModal containerRef={containerRef} />}
         </div>
 
         <div className="flex items-center gap-10">

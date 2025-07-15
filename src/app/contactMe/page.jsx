@@ -1,5 +1,11 @@
+import ContactComponent from "@/component/contact/ContactComponent";
+
 const page = () => {
-  return <div>this is contact me page</div>;
+  return (
+    <section className="md:px-56 px-4">
+      <ContactComponent />
+    </section>
+  );
 };
 
 export default page;
