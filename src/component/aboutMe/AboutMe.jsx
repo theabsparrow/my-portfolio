@@ -7,7 +7,7 @@ import MyStudio from "./MyStudio";
 
 const AboutMe = () => {
   return (
-    <section className="mt-8 md:mt-16 flex flex-col md:flex-row justify-between items-center gap-12">
+    <section className=" flex flex-col md:flex-row justify-between items-center gap-12">
       <div className="space-y-3 md:space-y-5">
         <h1 className="text-2xl md:text-3xl font-bold">About Me.</h1>
         <p className="flex flex-col space-y-2 md:space-y-5 text-lg md:text-xl">

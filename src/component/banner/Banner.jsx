@@ -6,8 +6,8 @@ import { LuRocket } from "react-icons/lu";
 
 const Banner = () => {
   return (
-    <>
-      <section className="relative md:h-[85vh] bg-[url('/my-image.webp')] bg-cover bg-center bg-no-repeat flex items-start justify-end rounded-3xl overflow-hidden shadow-xl p-4 md:py-10 md:px-12">
+    <section className=" mt-[84px]">
+      <div className="relative md:h-[85vh] bg-[url('/my-image.webp')] bg-cover bg-center bg-no-repeat flex items-start justify-end rounded-3xl overflow-hidden shadow-xl p-4 md:py-10 md:px-12">
         <div className="absolute inset-0 bg-gradient-to-r from-black/20 to-black/80 z-10 " />
         <div className="relative z-10">
           <div className="space-y-2 md:space-y-6">
@@ -48,9 +48,9 @@ const Banner = () => {
             <em>Keep moving, don't settle. 🚀</em>
           </div>
         </div>
-      </section>
+      </div>
       <GithubState />
-    </>
+    </section>
   );
 };
 

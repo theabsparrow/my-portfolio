@@ -32,7 +32,7 @@ const GithubState = () => {
   ];
 
   return (
-    <>
+    <div>
       {!stats || commits === null ? (
         <SkeletonLoader />
       ) : (
@@ -51,7 +51,7 @@ const GithubState = () => {
           ))}
         </div>
       )}
-    </>
+    </div>
   );
 };
 

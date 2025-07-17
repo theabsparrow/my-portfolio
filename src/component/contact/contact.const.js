@@ -1,3 +1,4 @@
+import { FaInstagram } from "react-icons/fa";
 import { BsDiscord, BsTwitterX } from "react-icons/bs";
 import { FaFacebookF, FaLinkedinIn } from "react-icons/fa";
 import { MdAlternateEmail } from "react-icons/md";
@@ -18,6 +19,11 @@ export const contactLink = [
     name: "LinkedIn",
     path: "https://www.linkedin.com/in/theabsparrow/",
     icon: FaLinkedinIn,
+  },
+  {
+    name: "Instagram",
+    path: "https://www.instagram.com/ithesparrow/",
+    icon: FaInstagram,
   },
   {
     name: "Facebook",

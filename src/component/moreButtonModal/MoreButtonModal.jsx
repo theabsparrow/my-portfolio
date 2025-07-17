@@ -1,31 +1,13 @@
 "use client";
 
 import Link from "next/link";
-import { IoLogoGithub } from "react-icons/io";
-import { TbLocation } from "react-icons/tb";
+import { moreButtonroutes } from "../const/navbar.const";
 
 const MoreButtonModal = ({ containerRef, setOpen }) => {
-  const routes = [
-    {
-      name: "My Github Profile",
-      description: "Explore my projects and contributions on Github",
-      pathname: `${process.env.NEXT_PUBLIC_GITHUB_LINK}`,
-      icon: IoLogoGithub,
-    },
-    {
-      name: "Contact Me",
-      description: "Have any Question? Feel free to reach out to me",
-      pathname: "/contactMe",
-      icon: TbLocation,
-    },
-  ];
   return (
-    <section
-      // ref={containerRef}
-      className="bg-[#c9c9ffE6] dark:bg-[#05092eE6] rounded-xl shadow-lg p-6 border"
-    >
+    <section className="bg-[#c9c9ffE6] dark:bg-[#05092eE6] rounded-xl shadow-lg p-6 border">
       <div>
-        {routes.map((route) => {
+        {moreButtonroutes.map((route) => {
           const IconComponent = route.icon;
           const isExternal = route.name === "My Github Profile";
 

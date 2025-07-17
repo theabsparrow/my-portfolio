@@ -33,8 +33,8 @@ const ContactComponent = () => {
             >
               <link.icon
                 className={`${link.name === "Discord" && "text-blue-700"} ${
-                  link.name === "Facebook" && "text-blue-600"
-                } `}
+                  link.name === "Instagram" && "text-[#ff00ff]"
+                } ${link.name === "Facebook" && "text-blue-600"} `}
               />{" "}
               {link.name} <IoArrowForwardOutline />
             </Link>
@@ -53,7 +53,7 @@ const ContactComponent = () => {
                 <link.icon
                   className={`${link.name === "Discord" && "text-blue-700"} ${
                     link.name === "Facebook" && "text-blue-600"
-                  } `}
+                  } ${link.name === "Instagram" && "text-[#ff00ff]"}`}
                 />{" "}
                 {link.name} <IoArrowForwardOutline />
               </Link>

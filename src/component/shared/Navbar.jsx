@@ -55,10 +55,10 @@ const Navbar = () => {
     }, 500);
   };
   return (
-    <nav className="sticky top-0 z-20 md:px-56 px-4 py-1 bg-[#c9c9ff] dark:bg-[#05092e]">
-      <section className="flex justify-between h-16 items-center relative">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-[#c9c9ff] dark:bg-[#05092e] shadow-md md:px-56 px-4 py-2">
+      <section className="flex justify-between h-16 items-center relative py-2">
         <div className=" flex items-center space-x-8">
-          <Link href="/" className=" cursor-pointer ">
+          <Link href="/">
             <Image
               src="/logo.webp"
               alt="Logo"
@@ -127,20 +127,25 @@ const Navbar = () => {
                   <RxCross1 className="dark:text-white hover:text-purple-600 duration-500" />
                 </button>
               </div>
-              {routes.map((route) => (
-                <Link
-                  key={route.name}
-                  href={route.pathname}
-                  className={` dark:text-white hover:text-purple-600 duration-500 flex items-center gap-2 py-2 px-2  rounded-xl ${
-                    pathname === route.pathname
-                      ? "bg-[#05092e] dark:bg-[#c9c9ff99] text-white"
-                      : "bg-[#c9c9ff99] dark:bg-[#05092e] text-gray-700"
-                  }`}
-                  onClick={handleClose}
-                >
-                  {route.name} <IoArrowForwardOutline />
-                </Link>
-              ))}
+              {routes.map((route) => {
+                const isExternal = route.name === "My Github";
+                return (
+                  <Link
+                    key={route.name}
+                    href={route.pathname}
+                    target={isExternal ? "_blank" : undefined}
+                    rel={isExternal ? "noopener noreferrer" : undefined}
+                    className={` dark:text-white hover:text-purple-600 duration-500 flex items-center gap-2 py-2 px-2  rounded-xl ${
+                      pathname === route.pathname
+                        ? "bg-[#05092e] dark:bg-[#c9c9ff99] text-white"
+                        : "bg-[#c9c9ff99] dark:bg-[#05092e] text-gray-700"
+                    }`}
+                    onClick={handleClose}
+                  >
+                    {route.name} <IoArrowForwardOutline />
+                  </Link>
+                );
+              })}
             </div>
           )}
         </div>

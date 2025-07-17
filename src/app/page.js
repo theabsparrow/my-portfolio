@@ -4,12 +4,10 @@ import ContactComponent from "@/component/contact/ContactComponent";
 
 const Home = () => {
   return (
-    <section className="md:px-56 px-4">
+    <section className="md:px-56 px-4 space-y-8 md:space-y-16">
       <Banner />
       <AboutMe />
-      <div className="mt-10 md:mt-20">
-        <ContactComponent />
-      </div>
+      <ContactComponent />
     </section>
   );
 };
