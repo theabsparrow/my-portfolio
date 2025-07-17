@@ -1,12 +1,16 @@
 import AboutMe from "@/component/aboutMe/AboutMe";
 import Banner from "@/component/banner/Banner";
+import ContactComponent from "@/component/contact/ContactComponent";
 
 const Home = () => {
   return (
-    <div className="md:px-56 px-4">
+    <section className="md:px-56 px-4">
       <Banner />
       <AboutMe />
-    </div>
+      <div className="mt-10 md:mt-20">
+        <ContactComponent />
+      </div>
+    </section>
   );
 };
 

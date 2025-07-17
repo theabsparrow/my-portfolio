@@ -2,6 +2,7 @@ import "./globals.css";
 import Navbar from "@/component/shared/Navbar";
 import Footer from "@/component/shared/Footer";
 import { Inconsolata } from "next/font/google";
+import { Toaster } from "sonner";
 
 const inconsolata = Inconsolata({
   subsets: ["latin"],
@@ -35,6 +36,7 @@ export default function RootLayout({ children }) {
         <Navbar />
         <main className="min-h-screen">{children}</main>
         <Footer />
+        <Toaster richColors position="top-center" />
       </body>
     </html>
   );

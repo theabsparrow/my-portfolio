@@ -9,6 +9,7 @@ import ThemeModal from "../thrmeModal/ThemeModal";
 import MoreButtonModal from "../moreButtonModal/MoreButtonModal";
 import Image from "next/image";
 import { desktopRoutes, routes } from "../const/navbar.const";
+import { RxCross1 } from "react-icons/rx";
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -121,6 +122,11 @@ const Navbar = () => {
           )}
           {showMenuContent && (
             <div className="absolute w-[88vw] inset-0 bg-white dark:bg-gray-900 z-50 flex flex-col space-y-6 p-6 animate-fadeInMenu">
+              <div className="flex items-center justify-end">
+                <button onClick={handleClose}>
+                  <RxCross1 className="dark:text-white hover:text-purple-600 duration-500" />
+                </button>
+              </div>
               {routes.map((route) => (
                 <Link
                   key={route.name}
@@ -130,7 +136,7 @@ const Navbar = () => {
                       ? "bg-[#05092e] dark:bg-[#c9c9ff99] text-white"
                       : "bg-[#c9c9ff99] dark:bg-[#05092e] text-gray-700"
                   }`}
-                  onClick={route.name === "Home" && handleClose}
+                  onClick={handleClose}
                 >
                   {route.name} <IoArrowForwardOutline />
                 </Link>

@@ -55,7 +55,7 @@ const InputTextArea = ({
             }),
           })}
           placeholder={placeholder || `Enter your ${label.toLowerCase()}`}
-          className={`bg-[#99a1af80] dark:bg-gray-900 w-full px-4 py-2 rounded-xl border transition-all duration-300 outline-none  dark:text-white text-gray-950 border-gray-600 ${
+          className={`bg-[#99a1af80] dark:bg-gray-900 w-full px-4 py-2 rounded-xl text-gray-950 dark:text-white border transition-all duration-300 outline-none    border-gray-600  placeholder:text-gray-600 dark:placeholder:text-gray-400 ${
             error
               ? "focus:border-red-400 focus:ring-1 focus:ring-red-500"
               : "focus:border-green-700 focus:ring-1 focus:ring-green-800"
