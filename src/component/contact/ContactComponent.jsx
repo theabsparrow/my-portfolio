@@ -8,7 +8,7 @@ import Marquee from "react-fast-marquee";
 
 const ContactComponent = () => {
   return (
-    <section className="mt-6 space-y-4">
+    <section className=" space-y-4">
       <div className="space-y-4">
         <h1 className="text-3xl md:text-4xl font-bold">
           Contact me <span className="text-blue-700">.</span>
