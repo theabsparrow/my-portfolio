@@ -1,3 +1,4 @@
+"use client";
 import { FaToolbox } from "react-icons/fa";
 import CoreSkills from "./CoreSkills";
 import UsedTechnology from "./UsedTechnology";
