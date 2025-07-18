@@ -46,8 +46,73 @@ export const techLogo = [
   },
 ];
 
-// {
-//     name: "Mongoose ",
-//     image:
-//       "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mongoose/mongoose-original-wordmark.svg",
-//   },
+export const usedTechLogo = [
+  {
+    name: "HTML 5",
+    image:
+      "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg",
+  },
+  {
+    name: "CSS 3",
+    image:
+      "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg",
+  },
+  {
+    name: "Git",
+    image:
+      "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg",
+  },
+  {
+    name: "GitHub",
+    image:
+      "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/github/github-original.svg",
+  },
+  {
+    name: "npm",
+    image:
+      "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/npm/npm-original-wordmark.svg",
+  },
+  {
+    name: "Yarn",
+    image:
+      "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/yarn/yarn-original.svg",
+  },
+  {
+    name: "ESLint",
+    image:
+      "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/eslint/eslint-original.svg",
+  },
+  {
+    name: "Ant Design",
+    image:
+      "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/antdesign/antdesign-original.svg",
+  },
+  {
+    name: "Figma",
+    image:
+      "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/figma/figma-original.svg",
+  },
+  {
+    name: "Mongoose",
+    image:
+      "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mongoose/mongoose-original-wordmark.svg",
+  },
+  {
+    name: "PostgreSQL",
+    image:
+      "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original.svg",
+  },
+  {
+    name: "Firebase",
+    image:
+      "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/firebase/firebase-original.svg",
+  },
+  {
+    name: "Vercel",
+    image:
+      "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vercel/vercel-original.svg",
+  },
+];
+
+export const usedtechLogoPart1 = usedTechLogo.slice(0, 7);
+export const usedtechLogoPart2 = usedTechLogo.slice(7);

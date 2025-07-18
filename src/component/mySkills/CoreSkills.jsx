@@ -3,15 +3,15 @@
 import { useState } from "react";
 import { techLogo } from "./mySkills.const";
 import { PlayCircle, Timer, Gauge, TimerReset, Square } from "lucide-react";
+import Image from "next/image";
 
 const CoreSkills = () => {
   const [open, setOpen] = useState(false);
   const [startSpin, setStartSpin] = useState(false);
   const [speedSpin, setSpeedSpin] = useState(false);
   const [mediumSpin, setMediumSpin] = useState(false);
-  console.log(startSpin);
   return (
-    <div className="mt-8 md:mt-16 space-y-4 ">
+    <div className=" space-y-4 ">
       <h1 className="text-center text-2xl md:text-4xl font-semibold">
         Core Skills & Technologies
       </h1>
@@ -36,12 +36,16 @@ const CoreSkills = () => {
                 key={skill.name}
                 className="bg-white/40 dark:bg-gray-500 p-3 md:p-4 shadow-lg rounded-xl "
               >
-                <div className="transform rotate-45 flex flex-col items-center ">
-                  <img
-                    src={skill.image}
-                    alt={skill.name}
-                    className=" h-8 md:w-24 md:h-16 md:mb-4  "
-                  />
+                <div className="transform rotate-45 flex flex-col items-center">
+                  <div className="relative h-8 w-8 md:w-24 md:h-16">
+                    <Image
+                      src={skill.image}
+                      alt={skill.name}
+                      fill
+                      sizes="(min-width: 768px) 96px, 32px"
+                      className="object-contain"
+                    />
+                  </div>
                   <p className="text-sm md:text-lg dark:text-gray-950 font-semibold">
                     {skill.name}
                   </p>

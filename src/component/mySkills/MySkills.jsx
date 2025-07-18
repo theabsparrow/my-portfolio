@@ -1,5 +1,6 @@
 import { FaToolbox } from "react-icons/fa";
 import CoreSkills from "./CoreSkills";
+import UsedTechnology from "./UsedTechnology";
 
 const MySkills = () => {
   return (
@@ -10,8 +11,10 @@ const MySkills = () => {
           <FaToolbox />
         </span>
       </h1>
-      <hr className="my-6 dark:border-gray-400 border-gray-700" />
+      <hr className="my-10 dark:border-gray-400 border-gray-700" />
       <CoreSkills />
+      <hr className="mb-10 dark:border-gray-400 border-gray-700" />
+      <UsedTechnology />
     </section>
   );
 };

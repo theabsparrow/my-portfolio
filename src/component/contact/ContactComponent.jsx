@@ -41,7 +41,7 @@ const ContactComponent = () => {
           ))}
         </div>
         <div className="md:hidden flex items-center">
-          <Marquee speed={20}>
+          <Marquee speed={20} direction="right" pauseOnHover>
             {contactLink.map((link, index) => (
               <Link
                 key={index}
