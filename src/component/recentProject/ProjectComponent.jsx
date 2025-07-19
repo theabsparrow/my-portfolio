@@ -11,13 +11,13 @@ import Link from "next/link";
 
 const ProjectComponent = ({ MyProjects }) => {
   return (
-    <section className="space-y-10">
+    <section className="space-y-16">
       {MyProjects.map((project, index) => {
         const projectImages = project?.images;
         const technology = project?.usedTechnology;
         const links = project?.links;
         return (
-          <div key={index} className="space-y-4">
+          <div key={index} className="space-y-2">
             <h1 className="text-2xl font-bold">{project?.projectName}</h1>
             <p className="md:w-[50vw]">{project?.description}</p>
             <p className="text-xl font-medium">
