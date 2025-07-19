@@ -12,11 +12,17 @@ export const projects = [
       { name: "dailyDishBanner2", path: "/dailyDishBanner-2.webp" },
       { name: "dailyDishBanner3", path: "/dailyDishBanner-3.webp" },
     ],
-    links: {
-      liveLink: "https://mealbx-client.vercel.app/",
-      githubClient: "https://github.com/theabsparrow/assignment-six-client.git",
-      githubServer: "https://github.com/theabsparrow/assignment-six-server.git",
-    },
+    links: [
+      { name: "Live Link", path: "https://mealbx-client.vercel.app/" },
+      {
+        name: "Github Client",
+        path: "https://github.com/theabsparrow/assignment-six-client.git",
+      },
+      {
+        name: "Github Server",
+        path: "https://github.com/theabsparrow/assignment-six-server.git",
+      },
+    ],
     usedTechnology: usedTechnology1,
   },
 ];

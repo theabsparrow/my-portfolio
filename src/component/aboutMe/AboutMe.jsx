@@ -33,7 +33,7 @@ const AboutMe = () => {
             </span>
           </Link>
           <Link
-            href="/aboutMe"
+            href="/contactMe"
             className=" md:text-lg p-1 md:p-2 flex items-center gap-1 md:gap-2 bg-gray-400 hover:bg-gray-500 text-gray-900 rounded-lg font-semibold md:hover:gap-3 duration-500"
           >
             Contact me{" "}

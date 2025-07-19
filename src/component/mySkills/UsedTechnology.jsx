@@ -10,16 +10,18 @@ import Marquee from "react-fast-marquee";
 
 const UsedTechnology = () => {
   return (
-    <section className="space-y-8">
-      <h1 className="text-center text-2xl md:text-4xl font-semibold">
-        Technologies I Use
-      </h1>
-      <p className="md:text-lg text-center max-w-3xl mx-auto font-medium">
-        I work with a wide range of modern tools and technologies to build
-        scalable, efficient, and user-friendly web applications. From UI
-        frameworks to deployment platforms, these technologies help me deliver
-        high-quality products across the full development stack.
-      </p>
+    <section className="space-y-4 md:space-y-0">
+      <div className="space-y-8 mb-8">
+        <h1 className="text-center text-2xl md:text-4xl font-semibold">
+          Technologies I Use
+        </h1>
+        <p className="md:text-lg text-center max-w-3xl mx-auto font-medium">
+          I work with a wide range of modern tools and technologies to build
+          scalable, efficient, and user-friendly web applications. From UI
+          frameworks to deployment platforms, these technologies help me deliver
+          high-quality products across the full development stack.
+        </p>
+      </div>
 
       <Marquee speed={50} pauseOnHover>
         <div className="hidden md:flex items-center space-x-4 ml-4">
